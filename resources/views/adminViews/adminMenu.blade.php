@@ -10,7 +10,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/adminStyles.css') }}" rel="stylesheet">
+        <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
         <style>
             html, body {
                 background-color: #fff;
@@ -68,15 +69,16 @@
 
 
     </head>
-    <body><div id="app">
+    <body>
+        <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'SalesIn') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> -->
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -118,8 +120,9 @@
         </main>
     </div>
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title-m-b-md">
                     <h3>Usuarios</h3>
+                    <hr width = 400>
                 </div>
                 <!-- <div class="links">
                     <a href="{{ route('login') }}">{{ __('Activar') }}</a>
@@ -130,12 +133,13 @@
                 @forelse($users as $user)
 	            <div class="panel panel-default">
 	                <div class="panel-heading">
+	            	    <a id = "Name" > {{ $user->name }} ----</a>
+                        <a id="Button" href="{{ route('login') }}">{{ __('Activar') }}</a>
+                        <a id="Button" href="{{ route('login') }}">{{ __('Desactivar') }}</a>  
+                        <a id="Button" href="{{ route('login') }}">{{ __('Borrar') }}</a> 
+                        <a id="Button" href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
                         <br>
-	            	    <a> {{ $user->name }} ----</a>
-                        <a href="{{ route('login') }}">{{ __('Activar') }}</a>
-                        <a href="{{ route('login') }}">{{ __('Desactivar') }}</a>  
-                        <a href="{{ route('login') }}">{{ __('Borrar') }}</a> 
-                        <a href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
+                        <br>
                         <hr width = 400>
                         <br>
 	                </div>

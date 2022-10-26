@@ -1,0 +1,60 @@
+#app{
+    min-height: 20px;
+    background-color: #1f648b;
+    padding: 10px;
+}
+
+.navbar-brand{
+    color: white;
+    text-decoration: none;
+    text-shadow: #ddd;
+}
+
+.navbar-brand:hover{
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.container{
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: large;
+    text-transform: uppercase;
+}
+.title-m-b-md{
+    padding: 1%;
+}
+
+
+
+.panel-default>.panel-heading-adminMenu {
+    color: #fff;
+    background: #1f648b;
+    border-color: #ddd;
+    font-size: large;
+}
+
+#Button{
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    background-color:lightgrey;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 3px;
+    margin: 5px;
+}
+
+#name{
+    text-transform: uppercase;
+    font-weight: bold;
+}
