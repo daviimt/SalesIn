@@ -2,7 +2,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Admin Menu</title>
+        <title>AdminMenu</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -119,17 +119,33 @@
     </div>
             <div class="content">
                 <div class="title m-b-md">
-                    K Pasa Rauh
+                    <h3>Usuarios</h3>
                 </div>
-                <div class="links">
-                    <a href="{{ route('login') }}">{{ __('Insertar') }}</a>
+                <!-- <div class="links">
+                    <a href="{{ route('login') }}">{{ __('Activar') }}</a>
+                    <a href="{{ route('login') }}">{{ __('Desactivar') }}</a>  
+                    <a href="{{ route('login') }}">{{ __('Borrar') }}</a> 
                     <a href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Borrar') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Activar Cuenta') }}</a>
-                    <a href="{{ route('login') }}">{{ __('Desactivar Cuenta') }}</a>
+                </div> -->
+                @forelse($users as $user)
+	            <div class="panel panel-default">
+	                <div class="panel-heading">
+                        <br>
+	            	    <a> {{ $user->name }} ----</a>
+                        <a href="{{ route('login') }}">{{ __('Activar') }}</a>
+                        <a href="{{ route('login') }}">{{ __('Desactivar') }}</a>  
+                        <a href="{{ route('login') }}">{{ __('Borrar') }}</a> 
+                        <a href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
+                        <hr width = 400>
+                        <br>
+	                </div>
                 </div>
+                @empty  
+	            <div class="alert alert-danger">
+	                {{ __("No hay usuarios en este momento") }}
+	            </div>
 
-              
+                @endforelse
             </div>
         </div>
     </body>

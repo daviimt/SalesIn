@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 
 class AdminController extends Controller
@@ -14,7 +15,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('adminViews/adminMenu');
+        $users = User::all();
+        //$users = User::latest()->paginate(10);
+        return view('adminViews/adminMenu', compact('users'));
+
+        //dd($users);
+        //return view('adminViews/adminMenu');
     }
 
     /**
@@ -85,6 +91,7 @@ class AdminController extends Controller
 
     public function showUsers()
     {
-        return view('adminViews/adminUpdate');
+        //return view('adminViews/adminUpdate');
+        
     }
 }
