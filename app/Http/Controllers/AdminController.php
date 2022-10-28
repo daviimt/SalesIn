@@ -15,8 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        //$users = User::latest()->paginate(10);
+        //$users = User::all();
+        $users = User::latest()->paginate(5);
         return view('adminViews/adminMenu', compact('users'));
 
         //dd($users);

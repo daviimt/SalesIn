@@ -2,6 +2,7 @@
     min-height: 20px;
     background-color: #1f648b;
     padding: 10px;
+    text-align: center;
 }
 
 .navbar-brand{
@@ -32,6 +33,9 @@
     padding: 1%;
 }
 
+.userscount{
+    margin: 0 auto;
+}
 
 
 .panel-default>.panel-heading-adminMenu {
@@ -39,6 +43,7 @@
     background: #1f648b;
     border-color: #ddd;
     font-size: large;
+    height: 50%;
 }
 
 #Button{
