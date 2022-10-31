@@ -32,20 +32,6 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
-    public function verify($code)
-{
-    $user = User::where('code', $code)->first();
-
-    if (! $user)
-        return redirect('/');
-
-    $user->actived = true;
-    $user->code = null;
-    $user->save();
-
-    return redirect('/home');
-}
-
     /**
      * Create a new controller instance.
      *
@@ -103,4 +89,19 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    public function verify($code)
+    {
+    $user = User::where('code', $code)->first();
+
+    if (! $user)
+        return redirect('/');
+
+    $user->actived = true;
+    $user->code = null;
+    $user->save();
+
+    return redirect('/home');
+    }
+
 }
