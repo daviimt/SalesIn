@@ -56,11 +56,10 @@
                         <div class="form-group row">
                             <label for="cicle" class="col-md-4 col-form-label text-md-right">{{ __('Cicle ID') }}</label>
                             <div class="col-md-6">
-                                <!-- <input type="text" id="demo" name="comboboxdemo"/> -->
-                                <select name=" optionlist " onChange="combo(this, 'demo')" class="form-control">
+                                <select name="cicle" onChange="combo(this, 'demo')" class="form-control">
                                     <option value="" selected disabled hidden>Cicles</option>
                                     @foreach($cicles as $cicle)
-                                        <option id = "Name" > {{ $cicle->name }}</option>
+                                        <option value="{{$cicle->id}}"> {{ $cicle->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
