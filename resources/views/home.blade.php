@@ -12,6 +12,7 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
+                        <a href="{{ route('enviarEmail') }}">Enviar Email</a>
                     @endif
 
                     You are logged in!
