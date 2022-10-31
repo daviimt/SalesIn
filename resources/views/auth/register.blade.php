@@ -31,7 +31,7 @@
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
-                                @error('name')
+                                @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -57,7 +57,8 @@
                             <label for="cicle" class="col-md-4 col-form-label text-md-right">{{ __('Cicle ID') }}</label>
                             <div class="col-md-6">
                                 <!-- <input type="text" id="demo" name="comboboxdemo"/> -->
-                                <select name=" optionlist " onChange="combo(this, 'demo')">
+                                <select name=" optionlist " onChange="combo(this, 'demo')" class="form-control">
+                                    <option value="" selected disabled hidden>Cicles</option>
                                     @foreach($cicles as $cicle)
                                         <option id = "Name" > {{ $cicle->name }}</option>
                                     @endforeach
