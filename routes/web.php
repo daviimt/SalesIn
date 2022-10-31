@@ -24,3 +24,6 @@ Route::get('/adminUpdate','AdminController@showUsers')->name('adminUpdate');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/register/verify/{code}', 'HomeController@verify');
+
