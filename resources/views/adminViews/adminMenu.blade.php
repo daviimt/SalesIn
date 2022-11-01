@@ -78,7 +78,12 @@
 	                <div class="panel-heading">
                         @forelse($users as $user)
 	            	    <a id = "Name" > {{ $user->name }} ----</a>
-                        <a id="Button" href="{{ route('login') }}">{{ __('Activar') }}</a>
+                        <form action="admin/activate/{{$user->id}}" method="POST" class="btn btn-primary">
+                            <button method="POST" class="btn btn-primary">
+                                    {{ __('Activar') }}
+                            </button>
+                        </form>
+                        
                         <a id="Button" href="{{ route('login') }}">{{ __('Desactivar') }}</a>  
                         <a id="Button" href="{{ route('login') }}">{{ __('Borrar') }}</a> 
                         <a id="Button" href="{{ route('adminUpdate') }}">{{ __('Editar') }}</a>
