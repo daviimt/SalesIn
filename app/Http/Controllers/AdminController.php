@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 
 
+
 class AdminController extends Controller
 {
     /**
@@ -23,99 +24,27 @@ class AdminController extends Controller
         //return view('adminViews/adminMenu');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function show(User $user)
     {
-        //
+        return view('adminViews.show',compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back()->with('message', ['success', __("Usuario eliminado correctamente")]); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function activate($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user-> update(['actived' => '1']);
+        return back()->with('message', ['success', __("Usuario Activado")]); 
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function desactivate($id)
     {
-        
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-       //
-    }
-
-    public function activate(Request $id){
-        $first_name = $request->input('1');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function showUsers()
-    {
-        //return view('adminViews/adminUpdate');
-        
+        $user = User::findOrFail($id);
+        $user-> update(['actived' => '0']);
+        return back()->with('message', ['success', __("Usuario Activado")]); 
     }
 }

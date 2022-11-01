@@ -3483,10 +3483,10 @@ input[type="submit"].btn-block {
     font-size: large;
     font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: rgb(214, 6, 6);
     background-color:#c8cbcf;
     border-style: solid;
-    border-color: black;
+    border-color: rgb(230, 10, 10);
     border-width: 1px;
     padding: 3px;
     margin: 5px;

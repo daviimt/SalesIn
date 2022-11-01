@@ -22,12 +22,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin','AdminController@index');
-Route::get('/adminUpdate','AdminController@showUsers')->name('adminUpdate');
-Route::post('admin/activate/{$id}','AdminController@activate');
+Route::get('/adminMenu','AdminController@showUsers')->name('adminMenu');
+
+
+//CRUD
+Route::get('/users/{user}','AdminController@show')->name('users.show');
+Route::delete('/users/{user}','AdminController@destroy')->name('users.delete');
+Route::put('/users/{user}','AdminController@activate')->name('users.activate');
+//Route::put('/users/{user}','AdminController@desactivate')->name('users.desactivate');
+
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/register/verify/{code}', 'HomeController@verify');
 
