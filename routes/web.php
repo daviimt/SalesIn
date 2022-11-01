@@ -1,5 +1,7 @@
 <?php
 
+use App\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin','AdminController@index');
 Route::get('/adminUpdate','AdminController@showUsers')->name('adminUpdate');
+Route::post('admin/activate/{$id}','AdminController@activate');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
