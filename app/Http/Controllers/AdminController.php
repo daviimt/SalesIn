@@ -63,7 +63,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -77,6 +77,30 @@ class AdminController extends Controller
     {
        //
     }
+
+    public function activate(Request $id){
+        $first_name = $request->input('1');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
