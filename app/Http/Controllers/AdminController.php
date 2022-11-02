@@ -29,9 +29,10 @@ class AdminController extends Controller
         return view('adminViews.show',compact('user'));
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
+        $user = User::findOrFail($id);
+        $user-> update(['deleted' => '1']);
         return back()->with('message', ['success', __("Usuario eliminado correctamente")]); 
     }
 
