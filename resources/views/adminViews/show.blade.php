@@ -9,14 +9,12 @@
             <div class="card-title">Usuarios</div>
             <p class="card-category">Vista detallada del usuario {{ $user->name }}</p>
           </div>
-          <!--body-->
           <div class="card-body">
             @if (session('success'))
             <div class="alert alert-success" role="success">
             {{ session('success') }}
             </div>
             @endif
-              <!--Start third-->
               <div class="col-md">
                 <div class="card card-user">
                   <div class="card-body">
@@ -39,6 +37,9 @@
                           <th>Created at</th>
                           <td><a href="#" target="_blank">{{  $user->created_at  }}</a></td>
                         </tr>
+                        <tr>
+                          <th>Deleted?</th>
+                          <td>{{$user->deleted}}
                       </tbody>
                     </table>
                   </div>
@@ -50,7 +51,6 @@
                   </div>
                 </div>
               </div>
-              <!--end third-->
             </div>
           </div>
         </div>

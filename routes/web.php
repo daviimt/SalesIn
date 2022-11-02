@@ -27,9 +27,11 @@ Route::get('/adminMenu','AdminController@showUsers')->name('adminMenu');
 
 //CRUD
 Route::get('/users/{user}','AdminController@show')->name('users.show');
-Route::put('/users/{user}/delete','AdminController@destroy')->name('users.delete');
+Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
 Route::put('/users/{user}/activate','AdminController@activate')->name('users.activate');
-Route::put('/users/{user}/desactivare','AdminController@desactivate')->name('users.desactivate');
+Route::put('/users/{user}/desactivate','AdminController@desactivate')->name('users.desactivate');
+Route::put('/users/{user}/softdel','AdminController@softdel')->name('users.softdel');
+
 
 
 Auth::routes();

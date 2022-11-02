@@ -16,10 +16,11 @@
         <br>
     </div>
 
+    @forelse($users as $user)
+    @if($user->deleted == 0)
     <div class="panel panel-default">
         <div class="panel-heading">
-        @forelse($users as $user)
-        @if($user->deleted == 0)
+        
             <a id = "Name" > {{ $user->name }}      </a>
             @if($user->actived == 0)
             <form action="{{ route('users.activate', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas activar?')">
@@ -41,32 +42,32 @@
             </form>
             @endif
 
-            <form action="{{ route('users.delete', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas eliminar?')">
+            <form action="{{ route('users.softdel', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas borrar?')">
                 @csrf
-                @method('DELETE')
+                @METHOD('PUT')
                 <button class="btn btn-info" type = "submit">
-                    Borrar
+                    SoftDelete
                 </button>
             </form>
 
-            <form action="{{ route('users.show', $user->id) }}" style="display : inline-block;">
+            <form action="{{ route('users.edit', $user->id) }}" style="display : inline-block;">
                 @csrf
                 <button class="btn btn-info" type = "submit">
                     Editar
                 </button>
             </form>
-            @endif
+            
             <br>
             <br>
             <hr width = 400>
             <br>
+            @endif
             @empty
                 <div class="alert alert-danger">
                     {{ __("No hay usuarios en este momento") }}
                 </div>
-        
-        @endforelse
         </div>
+        @endforelse
         @if($users->count())
             {{$users->links()}}
         @endif
