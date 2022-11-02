@@ -29,7 +29,7 @@ Route::get('/adminMenu','AdminController@showUsers')->name('adminMenu');
 Route::get('/users/{user}','AdminController@show')->name('users.show');
 Route::delete('/users/{user}','AdminController@destroy')->name('users.delete');
 Route::put('/users/{user}','AdminController@activate')->name('users.activate');
-//Route::put('/users/{user}','AdminController@desactivate')->name('users.desactivate');
+Route::put('/users/{user}','AdminController@desactivate')->name('users.desactivate');
 
 
 Auth::routes();

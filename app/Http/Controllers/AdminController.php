@@ -45,6 +45,6 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
         $user-> update(['actived' => '0']);
-        return back()->with('message', ['success', __("Usuario Activado")]); 
+        return back()->with('message', ['warning', __("Usuario Desactivado")]); 
     }
 }

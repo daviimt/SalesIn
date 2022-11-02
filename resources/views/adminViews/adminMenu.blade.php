@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
 <div class="content">
@@ -20,20 +20,26 @@
 	<div class="panel-heading">
         @forelse($users as $user)
 	    <a id = "Name" > {{ $user->name }} ----</a>
-            <form action="{{ route('users.activate', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas activar?')">
+
+                        @if($user->actived == 0)
+                        <form action="{{ route('users.activate', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas activar?')">
                             @csrf
                             @METHOD('PUT')
                             <button class="btn btn-info" type = "submit">
                                 Activar
                             </button>
-                        </form> 
+                        </form>
+                        @endif
                         
-                        <form action="{{ route('users.activate', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas desactivar?')">
+                        @if($user->actived == 1)
+                        <form action="{{ route('users.desactivate', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas desactivar?')">
                             @csrf
+                            @METHOD('PUT')
                             <button class="btn btn-info" type = "submit">
                                 Desactivar
                             </button>
-                        </form> 
+                        </form>
+                        @endif
 
                         <form action="{{ route('users.delete', $user->id) }}" method ="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas eliminar?')">
                             @csrf
@@ -41,14 +47,14 @@
                             <button class="btn btn-info" type = "submit">
                                 Borrar
                             </button>
-                        </form> 
+                        </form>
 
                         <form action="{{ route('users.show', $user->id) }}" style="display : inline-block;">
                             @csrf
                             <button class="btn btn-info" type = "submit">
                                 Editar
                             </button>
-                        </form> 
+                        </form>
 
                         <br>
                         <br>
@@ -60,7 +66,7 @@
                         </div>
                         @endforelse
 	                </div>
-            </div>  
+            </div>
         </div>
         @if($users->count())
                         {{$users->links()}}
