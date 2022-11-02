@@ -1,12 +1,12 @@
 #app{
     min-height: 20px;
-    background-color: #1f648b;
+    background-color: white;
     padding: 10px;
     text-align: center;
 }
 
 .navbar-brand{
-    color: white;
+    color: grey;
     text-decoration: none;
     text-shadow: #ddd;
 }

@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         //$users = User::all();
-        $users = User::latest()->paginate(10);
+        $users = User::paginate(10);
         return view('adminViews/adminMenu', compact('users'));
 
         //dd($users);
@@ -56,6 +56,24 @@ class AdminController extends Controller
     public function edit(User $user)
     {
         return view('adminViews.edit', compact('user'));
+    }
+
+    public function update(Request $request,$id){
+
+        $user = User::findOrFail($id);
+
+        $data = $request->only('name','surname','email');
+
+        if(trim($request->password)=='')
+        {
+            $data=$request->except('password');
+        }
+        else{
+            $data=$request->all();
+            $data['password']=bcrypt($request->password);
+        }
+        $user->update($data);
+        return view('adminViews.show',compact('user'));
     }
 
     
