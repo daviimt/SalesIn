@@ -24,6 +24,7 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+    
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -71,12 +72,11 @@ class LoginController extends Controller
             // This section is the only change
             if ($this->guard()->validate($this->credentials($request))) {
                 $user = $this->guard()->getLastAttempted();
-
-                if($user->type == 'a'){
-                    return redirect('/admin');
-                }
                 // Make sure the user is active
-                else if ($user->actived && $this->attemptLogin($request)) {
+                if ($user->actived && $this->attemptLogin($request)) {
+                    if($user->type == 'a'){
+                        return redirect('/admin');
+                    }
                     // Send the normal successful login response
                     return $this->sendLoginResponse($request);
                 } else {
