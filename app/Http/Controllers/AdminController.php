@@ -73,7 +73,7 @@ class AdminController extends Controller
             $data['password']=bcrypt($request->password);
         }
         $user->update($data);
-        return view('adminViews.show',compact('user'));
+        return view('adminViews.show',compact('user'),['warning', __("Usuario Desactivado")]);
     }
 
     

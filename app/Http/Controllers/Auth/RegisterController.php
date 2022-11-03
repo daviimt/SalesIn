@@ -82,9 +82,9 @@ class RegisterController extends Controller
             'email_verified_at' =>null,
         ]);
 
-        Mail::send('confirmation_code', $data, function($message) use ($data) {
-            $message->to($data['email'], $data['name'])->subject('Por favor confirma tu correo');
-        });
+        // Mail::send('confirmation_code', $data, function($message) use ($data) {
+        //     $message->to($data['email'], $data['name'])->subject('Por favor confirma tu correo');
+        // });
 
         return $user;
     }

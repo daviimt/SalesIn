@@ -15,14 +15,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         return view('home');
@@ -30,16 +25,11 @@ class HomeController extends Controller
 
     public function verify($id)
     {
-    $user = User::where('id', $id)->first();
-
-    if (! $user)
+        $user = User::findorFail($id);
+        $user->update(['email_verified_at' => now()]);
+        $user->save();
         return redirect('/');
 
-    // $user->actived = true;
-    $user->email_verified_at != null;
-    $user->save();
-
-    return redirect('/home');
     }
 
     public function enviarEmail(){

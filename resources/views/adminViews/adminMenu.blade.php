@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -11,6 +12,11 @@
                                 <h4 class="card-title">Usuarios</h4>
                                 <p class="card-category">Usuarios registrados</p>
                             </div>
+                            @if(session('message'))
+                            <div class="alert alert-{{ session('message')[0] }}">
+                                    {{ session('message')[1] }}
+                            </div>
+                            @endif
                             <div class="card-body">
                                 @if (session('success'))
                                 <div class="alert alert-success" role="success">
@@ -30,6 +36,7 @@
                                         <thead class="text-primary">
                                             <th>ID</th>
                                             <th>Nombre</th>
+                                            <th>Apellido</th>
                                             <th>Correo</th>
                                             <th class="text-right">Acciones</th>
                                         </thead>
@@ -39,6 +46,7 @@
                                             <tr>
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
+                                                <td>{{$user->surname}}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td class="td-actions text-right">
 
