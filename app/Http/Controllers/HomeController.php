@@ -28,15 +28,15 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function verify($code)
+    public function verify($id)
     {
-    $user = User::where('code', $code)->first();
+    $user = User::where('id', $id)->first();
 
     if (! $user)
         return redirect('/');
 
-    $user->actived = true;
-    $user->code = null;
+    // $user->actived = true;
+    $user->email_verified_at != null;
     $user->save();
 
     return redirect('/home');

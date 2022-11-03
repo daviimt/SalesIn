@@ -22,8 +22,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('type')->default('U');
-            $table->string('code')->nullable();
-            $table->boolean('actived')->default(0);
             $table->unsignedBigInteger('cicle_id');
             $table->foreign('cicle_id')->references('id')->on('cicles');
             $table->unsignedBigInteger('num_offer_applied')->default(0);

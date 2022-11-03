@@ -73,14 +73,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $data['code'] = str_random(25);
-
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
             'cicle_id'=>$data['cicle'],
             'password' => Hash::make($data['password']),
+            'email_verified_at' =>null,
         ]);
 
         Mail::send('confirmation_code', $data, function($message) use ($data) {
