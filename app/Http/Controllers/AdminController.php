@@ -41,15 +41,17 @@ class AdminController extends Controller
 
     public function activate($id)
     {
-        $user = User::findOrFail($id);
-        $user-> update(['actived' => '1']);
+        $user = User::find($id);
+        $user->actived = 1;
+        $user-> update();
         return back()->with('message', ['success', __("Usuario Activado")]); 
     }
     
     public function desactivate($id)
     {
-        $user = User::findOrFail($id);
-        $user-> update(['actived' => '0']);
+        $user = User::find($id);
+        $user->actived = 0;
+        $user-> update();
         return back()->with('message', ['warning', __("Usuario Desactivado")]); 
     }
 
