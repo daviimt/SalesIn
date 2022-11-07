@@ -9,12 +9,12 @@
                         <div class="card-title">Usuarios</div>
                         <p class="card-category">Vista detallada del usuario {{ $user->name }}</p>
                     </div>
-                    <div class="card-body">
-                        @if (session('success'))
-                        <div class="alert alert-success" role="success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+                    @if(session('message'))
+                            <div class="alert alert-{{ session('message')[0] }}">
+                                    {{ session('message')[1] }}
+                            </div>
+                    @endif
+                    <div class="card-body" style="margin_bottom:10px;">
                         <div class="col-md">
                             <div class="card card-user">
                                 <div class="card-body">
@@ -30,16 +30,17 @@
                                                 <td>{{ $user->name }}</td>
                                             </tr>
                                             <tr>
+                                                <th>Surname</th>
+                                                <td>{{ $user->surname }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Email</th>
-                                                <td><span class="badge badge-primary">{{ $user->email }}</span></td>
+                                                <td>{{ $user->email }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Created at</th>
                                                 <td><a href="#" target="_blank">{{  $user->created_at  }}</a></td>
                                             </tr>
-                                            <tr>
-                                                <th>Deleted?</th>
-                                                <td>{{$user->deleted}}
                                         </tbody>
                                     </table>
                                 </div>

@@ -41,15 +41,17 @@ class AdminController extends Controller
 
     public function activate($id)
     {
-        $user = User::findOrFail($id);
-        $user-> update(['actived' => '1']);
+        $user = User::find($id);
+        $user->actived = 1;
+        $user-> update();
         return back()->with('message', ['success', __("Usuario Activado")]); 
     }
     
     public function desactivate($id)
     {
-        $user = User::findOrFail($id);
-        $user-> update(['actived' => '0']);
+        $user = User::find($id);
+        $user->actived = 0;
+        $user-> update();
         return back()->with('message', ['warning', __("Usuario Desactivado")]); 
     }
 
@@ -73,7 +75,7 @@ class AdminController extends Controller
             $data['password']=bcrypt($request->password);
         }
         $user->update($data);
-        return view('adminViews.show',compact('user'));
+        return view('adminViews.show',compact('user'),['warning', __("Usuario Desactivado")]);
     }
 
     

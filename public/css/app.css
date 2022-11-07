@@ -616,7 +616,8 @@ pre code {
 }
 
 .container-fluid {
-    width: 100%;
+    font-size: larger;
+    width: 60%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -3039,6 +3040,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-link {
+    background-color: #38c172;
+    border: none;
     font-weight: 400;
     color: #3490dc;
     background-color: transparent
@@ -5023,11 +5026,17 @@ input[type=submit].btn-block {
 }
 
 .alert {
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
     position: relative;
     padding: .75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: .25rem
+    border-radius: 1rem
 }
 
 .alert-heading {
@@ -5222,6 +5231,9 @@ input[type=submit].btn-block {
     display: flex;
     align-items: flex-start
 }
+
+
+
 
 .media-body {
     flex: 1
@@ -6255,6 +6267,11 @@ button.bg-success:hover {
 
 .bg-info {
     background-color: #6cb2eb !important
+}
+
+.material-symbols-outlined:focus{
+    background-color:#4dc0b5;
+    border: nones;
 }
 
 a.bg-info:focus,
