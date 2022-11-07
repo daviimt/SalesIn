@@ -23,14 +23,6 @@
                                     {{ session('success') }}
                                 </div>
                                 @endif
-                                <div class="row">
-                                    <div class="col-12 text-right">
-                                        @can('user_create')
-                                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-facebook">Añadir
-                                            usuario</a>
-                                        @endcan
-                                    </div>
-                                </div>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
@@ -71,8 +63,6 @@
                                                     </form>
                                                     @endcan
                                                     <!-- FINAL -->
-
-                                                    
                                                     @if($user->actived == 0)
                                                     <form action="{{ route('users.activate', $user->id) }}"
                                                         method="POST" style="display : inline-block;"

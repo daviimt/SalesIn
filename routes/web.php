@@ -35,12 +35,6 @@ Route::put('/users/{user}/softdel','AdminController@softdel')->name('users.softd
 Route::put('/users/{user}/update','AdminController@update')->name('users.update');
 
 
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/register/verify/{id}', 'HomeController@verify')->name('email.activate');
-
-Route::get('/enviarEmail', 'HomeController@enviarEmail')->name('enviarEmail');
 
