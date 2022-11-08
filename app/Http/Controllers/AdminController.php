@@ -78,6 +78,13 @@ class AdminController extends Controller
         return view('adminViews.show',compact('user'),['warning', __("Usuario Desactivado")]);
     }
 
+    public function verificate_email($id)
+    {
+        $user = User::find($id);
+        $user->email_verified_at = now();
+        $user-> update();
+        return back()->with('message', ['warning', __("Cuenta Activada")]); 
+    }
     
 }
 

@@ -1,6 +1,12 @@
 <?php
 
 use App\Controllers\AdminController;
+use App\Controllers\HomeController;
+use App\Controllers\Auth\VerificationController;
+use Illuminate\ Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 /*
@@ -17,15 +23,17 @@ use App\Controllers\AdminController;
 Route::get('/', function () {
     return view('welcome');
 });
+// Auth::routes(['verify' => true]);
 
-// Auth::routes();
-Auth::routes(['verify' => true]);
 
+Auth::routes();
+
+Route::get('/email/verify/{id}','AdminController@verificate_email');
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin','AdminController@index');
-    Route::get('/adminMenu','AdminController@showUsers')->name('adminMenu');
     //CRUD
     Route::get('/users/{user}','AdminController@show')->name('users.show');
     Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');

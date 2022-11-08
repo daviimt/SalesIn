@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Cicles;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -59,11 +61,11 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function showRegistrationForm()
+   public function showRegistrationForm()
     {
         $cicles=Cicles::all();
         return view('auth.register',compact('cicles'));
-    }
+    } 
 
     /**
      * Create a new user instance after a valid registration.
@@ -73,7 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -83,11 +85,18 @@ class RegisterController extends Controller
             'email_verified_at' =>null,
         ]);
 
-        // Mail::send('confirmation_code', $data, function($message) use ($data) {
-        //     $message->to($data['email'], $data['name'])->subject('Por favor confirma tu correo');
-        // });
-
         return $user;
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user)?: redirect($this->redirectPath());
     }
 
 }

@@ -2,19 +2,32 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use App\Mail\UserVerificationEmail;
+use Illuminate\Support\Facades\Mail;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+
+    public function sendEmailVerificationNotification()
+    {
+       $this->notify(new Notifications\UserVerificationEmail);
+    }
+   
     protected $fillable = [
         'name', 'surname', 'email', 'password','type', 'cicle_id',
     ];
     protected $hidden = [
         'password', 'remember_token',
     ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
 }
 
 // class User extends Authenticatable
