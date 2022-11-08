@@ -23,19 +23,18 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin','AdminController@index');
-Route::get('/adminMenu','AdminController@showUsers')->name('adminMenu');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin','AdminController@index');
+    Route::get('/adminMenu','AdminController@showUsers')->name('adminMenu');
+    //CRUD
+    Route::get('/users/{user}','AdminController@show')->name('users.show');
+    Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
+    Route::put('/users/{user}/activate','AdminController@activate')->name('users.activate');
+    Route::put('/users/{user}/desactivate','AdminController@desactivate')->name('users.desactivate');
+    Route::put('/users/{user}/softdel','AdminController@softdel')->name('users.softdel');
+    Route::put('/users/{user}/update','AdminController@update')->name('users.update');
+});
 
 
-//CRUD
-Route::get('/users/{user}','AdminController@show')->name('users.show');
-Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
-Route::put('/users/{user}/activate','AdminController@activate')->name('users.activate');
-Route::put('/users/{user}/desactivate','AdminController@desactivate')->name('users.desactivate');
-Route::put('/users/{user}/softdel','AdminController@softdel')->name('users.softdel');
-Route::put('/users/{user}/update','AdminController@update')->name('users.update');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 

@@ -38,7 +38,7 @@ class AdminController extends Controller
         return back()->with('message', ['success', __("Usuario eliminado correctamente")]); 
     }
 
-
+    
     public function activate($id)
     {
         $user = User::find($id);
