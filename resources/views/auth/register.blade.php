@@ -56,15 +56,22 @@
                         <div class="form-group row">
                             <label for="cicle" class="col-md-4 col-form-label text-md-right">{{ __('Cicle ID') }}</label>
                             <div class="col-md-6">
-                                <select name="cicle" onChange="combo(this, 'demo')" class="form-control">
+                                <select name="cicle" onChange="combo(this, 'demo')" class="form-control @error('cicle') is-invalid @enderror" name="password">
                                     <option value="" selected disabled hidden>Cicles</option>
                                     @foreach($cicles as $cicle)
                                         <option value="{{$cicle->id}}"> {{ $cicle->name }}</option>
                                     @endforeach
-                                </select>
+                                </select>  
+
+                                @error('cicle')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                
                             </div>
                         </div>
-
+                        
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
