@@ -4131,7 +4131,7 @@ input[type=submit].btn-block {
 .navbar,
 .navbar>.container,
 .navbar>.container-fluid {
-    background-color: #1B2631;
+    background-color: #0F1923;
     color: #fff;
     display: flex;
     flex-wrap: wrap;
@@ -4428,12 +4428,12 @@ input[type=submit].btn-block {
 .navbar-light .navbar-brand,
 .navbar-light .navbar-brand:focus,
 .navbar-light .navbar-brand:hover {
-    background-color: #1B2631;
+    background-color: #0F1923;
     color: #fff;
 }
 
 .navbar-light .navbar-nav .nav-link {
-    background-color: #1B2631;
+    background-color: #0F1923;
     color: #fff;
 }
 
@@ -6353,7 +6353,7 @@ button.bg-dark:hover {
 }
 
 .bg-white {
-    background-color: #1B2631 !important
+    background-color: #0F1923 !important
 }
 
 .bg-transparent {
