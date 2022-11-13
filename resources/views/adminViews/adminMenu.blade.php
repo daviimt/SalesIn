@@ -63,6 +63,7 @@
                                                     </form>
                                                     @endcan
                                                     <!-- FINAL -->
+                                                    @if($user->email_verified_at != null)
                                                     @if($user->actived == 0)
                                                     <form action="{{ route('users.activate', $user->id) }}"
                                                         method="POST" style="display : inline-block;"
@@ -85,6 +86,11 @@
                                                             Desactivar
                                                         </button>
                                                     </form>
+                                                    @endif
+                                                    @else
+                                                    <button class="btn btn-warning" type="submit" disabled=true>
+                                                            Not actived
+                                                        </button>
                                                     @endif
 
                                                     <form action="{{ route('users.softdel', $user->id) }}" method="POST"
