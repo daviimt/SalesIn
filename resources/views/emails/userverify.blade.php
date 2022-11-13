@@ -1,10 +1,11 @@
 @component('mail::message')
 # Welcome {{ $notifiable->name }}
 
-Para usar tu cuenta es necesario que actives tu cuenta.
+Welcome to {{ config('app.name') }}, before you start using your account, you need to activate it
+    ¯\\_(ツ)_/¯
 
 @component('mail::button', ['url' => $url])
-Activar Cuenta
+Activate Account
 @endcomponent
 
 If you did not create an account, no further action is required.
