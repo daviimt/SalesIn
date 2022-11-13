@@ -95,8 +95,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         // $this->guard()->login($user);
-
-        return $this->registered($request, $user)?: redirect($this->redirectPath());
+        return $this->registered($request, $user)?: redirect($this->redirectPath())->with('message', ['warning', __("Please activate your account using the email sent")]);
     }
 
 }

@@ -4,16 +4,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+            @if(session('message'))
+                            <div class="alert alert-{{ session('message')[0] }}">
+                                    {{ session('message')[1] }}
+                            </div>
+                            @endif
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <div class="card-title">Usuarios</div>
                         <p class="card-category">Vista detallada del usuario {{ $user->name }}</p>
                     </div>
-                    @if(session('message'))
-                            <div class="alert alert-{{ session('message')[0] }}">
-                                    {{ session('message')[1] }}
-                            </div>
-                    @endif
                     <div class="card-body" style="margin_bottom:10px;">
                         <div class="col-md">
                             <div class="card card-user">

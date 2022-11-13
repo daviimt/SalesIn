@@ -35,7 +35,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->deleted = 1;
         $user-> update();
-        return back()->with('message', ['success', __("Usuario eliminado correctamente")]); 
+        return back()->with('message', ['success', __("User successfully deleted")]); 
     }
 
     
@@ -44,7 +44,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->actived = 1;
         $user-> update();
-        return back()->with('message', ['success', __("Usuario Activado")]); 
+        return back()->with('message', ['success', __("User Enabled")]); 
     }
     
     public function desactivate($id)
@@ -52,7 +52,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->actived = 0;
         $user-> update();
-        return back()->with('message', ['warning', __("Usuario Desactivado")]); 
+        return back()->with('message', ['warning', __("User Disabled")]); 
     }
 
     public function edit(User $user)
@@ -75,7 +75,7 @@ class AdminController extends Controller
             $data['password']=bcrypt($request->password);
         }
         $user->update($data);
-        return view('adminViews.show',compact('user'),['warning', __("Usuario Desactivado")]);
+        return view('adminViews.show',compact('user'))->with('message', ['warning', __("Account activated")]);
     }
 
     public function verificate_email($id)
@@ -83,7 +83,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->email_verified_at = now();
         $user-> update();
-        return back()->with('message', ['warning', __("Cuenta Activada")]); 
+        return back()->with('message', ['warning', __("Account activated")]); 
     }
     
 }

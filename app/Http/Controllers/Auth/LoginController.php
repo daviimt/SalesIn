@@ -68,7 +68,6 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-
             // This section is the only change
             if ($this->guard()->validate($this->credentials($request))) {
                 $user = $this->guard()->getLastAttempted();
@@ -83,9 +82,7 @@ class LoginController extends Controller
                     // Increment the failed login attempts and redirect back to the
                     // login form with an error message.
                     $this->incrementLoginAttempts($request);
-                    return redirect()
-                    -> route('login')
-                    ->with('actived','Administrator must active your account.');
+                    return back()->with('message', ['warning', __("Administrator must activate your account")]); 
                 }
             } else{
         
