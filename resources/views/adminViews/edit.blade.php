@@ -2,6 +2,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+    @if(session('message'))
+    <div class="alert alert-{{ session('message')[0] }}">
+    {{ session('message')[1] }}
+    </div>
+    @endif
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Update</div>
@@ -84,10 +89,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button class="btn btn-primary" type="submit">
                                     Confirm
                                 </button>
+                                <a href="/admin" class="btn btn-info"> Volver </a>
                             </div>
+                            
                         </div> 
                     </form>
                 </div>

@@ -75,7 +75,7 @@ class AdminController extends Controller
             $data['password']=bcrypt($request->password);
         }
         $user->update($data);
-        return view('adminViews.show',compact('user'))->with('message', ['warning', __("Account activated")]);
+        return back()->with('message', ['warning', __("Account Updated")]);
     }
 
     public function verificate_email($id)
