@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Articles;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -13,7 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Articles::paginate(10);
+        return view('adminViews/adminMenu', compact('article'));
     }
 
     /**
@@ -68,7 +70,20 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Articles::findOrFail($id);
+
+        $data = $request->only('title','image','description','cicle_id');
+
+        if(trim($request->password)=='')
+        {
+            $data=$request->except('password');
+        }
+        else{
+            $data=$request->all();
+            $data['password']=bcrypt($request->password);
+        }
+        $article->update($data);
+        return back()->with('message', ['warning', __("Account Updated")]);
     }
 
     /**
