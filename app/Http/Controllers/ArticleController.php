@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Articles::paginate(10);
-        return view('adminViews/adminMenu', compact('article'));
+        return view('adminViews.articles.index', compact('article'));
     }
 
     /**
@@ -58,7 +58,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('adminViews.editArticle', compact('article'));
     }
 
     /**
@@ -74,16 +74,8 @@ class ArticleController extends Controller
 
         $data = $request->only('title','image','description','cicle_id');
 
-        if(trim($request->password)=='')
-        {
-            $data=$request->except('password');
-        }
-        else{
-            $data=$request->all();
-            $data['password']=bcrypt($request->password);
-        }
         $article->update($data);
-        return back()->with('message', ['warning', __("Account Updated")]);
+        return back()->with('message', ['warning', __("Article Updated")]);
     }
 
     /**
