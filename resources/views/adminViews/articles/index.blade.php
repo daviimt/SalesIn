@@ -3,23 +3,25 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-    	<h1 class="text-center text-mute"> {{ __("Foros") }} </h1>
+    	<h1 class="text-center text-mute"> {{ __("Articles") }} </h1>
 
-    	@forelse($forums as $forum)
+    	@foreach($articles as $article)
+		@if($article->deleted == 0)
 	        <div class="panel panel-default">
 	            <div class="panel-heading">
-	            	<a href="forums/{{ $forum->id }}"> {{ $forum->name }} </a>
+	            	<a href="articles/{{ $article->id }}"> {{ $article->name }} </a>
 	            </div>
 
 	            <div class="panel-body">
-	                {{ $forum->description }}
+	                {{ $article->description }}
 	            </div>
 	        </div>
     	@empty
 	    <div class="alert alert-danger">
-	        {{ __("No hay ningún foro en este momento") }}
+	        {{ __("No hay ningún article en este momento") }}
 	    </div>
-    	@endforelse
+		@endif
+    	@endforeach
         </div>
     </div>
 @endsection
