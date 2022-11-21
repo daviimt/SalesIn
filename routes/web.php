@@ -36,7 +36,14 @@ Route::group(['middleware' => 'admin'], function () {
     //CRUD
     Route::get('/users/{user}','AdminController@show')->name('users.show');
     Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
+
     Route::resource('/articles','ArticleController');
+    Route::post('/articles/create','ArticleController@create')->name('create');
+    Route::put('/articles/update/{id}','ArticleController@update')->name('update');
+    Route::get('/articles/edit/{id}','ArticleController@edit')->name('edit');
+    Route::put('/articles/delete/{id}','ArticleController@delete')->name('delete');
+
+
     Route::put('/users/{user}/activate','AdminController@activate')->name('users.activate');
     Route::put('/users/{user}/desactivate','AdminController@desactivate')->name('users.desactivate');
     Route::put('/users/{user}/softdel','AdminController@softdel')->name('users.softdel');

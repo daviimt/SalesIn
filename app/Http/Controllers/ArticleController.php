@@ -15,8 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Articles::paginate(10);
-        return view('adminViews.articles.index', compact('article'));
+        $articles = Articles::paginate(5);
+        return view('adminViews.articles.index', compact('articles'));
     }
 
     /**
@@ -26,7 +26,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        // $articles = Articles::all();
+        // return view('adminViews.articles.index', compact('article'));
     }
 
     /**
@@ -59,7 +60,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        return view('adminViews.editArticle', compact('article'));
+        // return view('adminViews.editArticle', compact('article'));
+        return view('adminViews.articles.update');
     }
 
     /**
@@ -77,6 +79,7 @@ class ArticleController extends Controller
 
         $article->update($data);
         return back()->with('message', ['warning', __("Article Updated")]);
+        // return view('adminViews.articles.update');
     }
 
     /**

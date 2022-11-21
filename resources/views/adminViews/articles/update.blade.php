@@ -11,17 +11,16 @@
             <div class="card">
                 <div class="card-header">Update</div>
                 <div class="card-body">
-                    <form action="{{ route('users.update',$user->id) }}" method="POST">
+                    <form action="{{ route('articles.update',$article->id) }}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ $user->name}}" required autocomplete="name" autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror"
+                                    name="title" value="{{ $article->title}}" required autocomplete="title" autofocus>
 
-                                @error('name')
+                                @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -30,14 +29,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text"
-                                    class="form-control @error('surname') is-invalid @enderror" name="surname"
-                                    value="{{ $user->surname}}" required autocomplete="surname" autofocus>
+                                <input id="description" type="text"
+                                    class="form-control @error('description') is-invalid @enderror" name="description"
+                                    value="{{ $article->description}}" required autocomplete="description" autofocus>
 
-                                @error('surname')
+                                @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -46,13 +45,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address'</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ $user->email }}" required autocomplete="email">
+                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror"
+                                    name="image" value="{{ $article->image }}" required autocomplete="image">
 
-                                @error('email')
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cicle_id" class="col-md-4 col-form-label text-md-right">Cicle ID</label>
+
+                            <div class="col-md-6">
+                                <input id="cicle_id" type="text" class="form-control @error('cicle_id') is-invalid @enderror"
+                                    name="cicle_id" value="{{ $article->cicle_id }}" required autocomplete="cicle_id">
+
+                                @error('cicle_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
