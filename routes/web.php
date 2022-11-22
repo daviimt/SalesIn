@@ -1,14 +1,4 @@
 <?php
-
-use App\Controllers\AdminController;
-use App\Controllers\HomeController;
-use App\Controllers\Auth\VerificationController;
-use Illuminate\ Http\Request;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

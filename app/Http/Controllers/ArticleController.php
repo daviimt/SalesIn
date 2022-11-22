@@ -63,7 +63,6 @@ class ArticleController extends Controller
     {
         // return view('adminViews.editArticle', compact('article'));
         $cicles=Cicles::all();
-       
         return view('adminViews.articles.edit', compact('cicles'))->with(['article'=>Articles::find($id)]);
     }
 
@@ -76,13 +75,16 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = Articles::findOrFail($id);
-
-        $data = $request->only('title','image','description','cicle_id');
-
-        $article->update($data);
-        // return back()->with('message', ['warning', __("Article Updated")]);
-        // return back()->with('message', ['success', __("Article Updated")]);
+        $article=Articles::find($id);
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+            'cicle_id' => 'required',
+        ]);
+  
+        $article->update($request->all());
+       
         return redirect()->route('articles.index')
                         ->with('success','Article updated successfully');
 
