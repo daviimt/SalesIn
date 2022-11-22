@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 <div class="container">
     <div class="row justify-content-center">
@@ -56,8 +56,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror"
-                                    name="image" value="{{ $article->image }}" required autocomplete="image">
+                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $article->image }}" required autocomplete="image">
 
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -70,29 +69,29 @@
                         <div class="form-group row">
                             <label for="cicle_id" class="col-md-4 col-form-label text-md-right">Cicle</label>
                             <div class="col-md-6 input-group{{ $errors->has('cicle') ? ' has-danger' : '' }}">
-            <select class="form-control{{ $errors->has('cicle_id') ? ' is-invalid' : '' }}" name="cicle_id">
-            @foreach($cicles as $cicle)
-                @if($cicle->id==$article->cicle_id)
-                    <option value="{{$cicle->id}}">{{$cicle->name}}</option>
-                        @foreach($cicles as $cicle)
-                            <option value="{{$cicle->id}}">{{$cicle->name}}</option>
-                        @endforeach
-                @endif
-            @endforeach
-            </select>
-         </div>
+                                <select class="form-control{{ $errors->has('cicle_id') ? ' is-invalid' : '' }}" name="cicle_id">
+                                    @foreach($cicles as $cicle)
+                                    @if($cicle->id==$article->cicle_id)
+                                    <option value="{{$cicle->id}}">{{$cicle->name}}</option>
+                                    @foreach($cicles as $cicle)
+                                    <option value="{{$cicle->id}}">{{$cicle->name}}</option>
+                                    @endforeach
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <br>
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <a class="btn btn-primary" href="{{ route('articles.index') }}"> Back</a>
-        </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <a class="btn btn-primary" href="{{ route('articles.index') }}"> Back</a>
+                                </div>
                             </div>
-                            
-                        </div> 
+
+                        </div>
                     </form>
                 </div>
             </div>
