@@ -9,11 +9,14 @@
         @if($article->deleted==0)
 	        <div class="panel panel-default">
 	            <div class="panel-heading panel-heading-article">
-	            	Title :  {{ $article->title }}
+	            	<a href="{{route('articles.edit', $article->id)}}"> {{ $article->title }} </a>
+                    <span class="pull-right">
+                        {{ __("Articles") }}: {{ $article->title }}
+                    </span>
 	            </div>
 
 	            <div class="panel-body">
-	                Description : {{ $article->description }}
+	                {{ $article->description }}
 	            </div>
                 <a class="btn btn-primary btm-sm" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
                 <a class="btn btn-danger btm-sm" href="{{ route('articles.create') }}"> Delete</a>
