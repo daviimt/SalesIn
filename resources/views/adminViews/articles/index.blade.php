@@ -8,7 +8,7 @@
     	@foreach($articles as $article)
 	        <div class="panel panel-default">
 	            <div class="panel-heading panel-heading-article">
-	            	<a href="{ route('admin.articles.edit, $article->id') }}"> {{ $article->title }} </a>
+	            	<a href="{{route('articles.edit', $article->id)}}"> {{ $article->title }} </a>
                     <span class="pull-right">
                         {{ __("Articles") }}: {{ $article->title }}
                     </span>

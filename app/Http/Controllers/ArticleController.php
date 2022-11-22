@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Articles;
+use App\Cicles;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -61,7 +62,9 @@ class ArticleController extends Controller
     public function edit($id)
     {
         // return view('adminViews.editArticle', compact('article'));
-        return view('adminViews.articles.update');
+        $cicles=Cicles::all();
+       
+        return view('adminViews.articles.edit', compact('cicles'))->with(['article'=>Articles::find($id)]);
     }
 
     /**
