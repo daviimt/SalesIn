@@ -6,6 +6,7 @@
     	<h1 class="text-center text-mute"> {{ __("Articles") }} </h1>
 
     	@foreach($articles as $article)
+        @if($article->deleted==0)
 	        <div class="panel panel-default">
 	            <div class="panel-heading panel-heading-article">
 	            	<a href="{{route('articles.edit', $article->id)}}"> {{ $article->title }} </a>
@@ -17,8 +18,11 @@
 	            <div class="panel-body">
 	                {{ $article->description }}
 	            </div>
+                <a class="btn btn-primary btm-sm" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
+                <a class="btn btn-danger btm-sm" href="{{ route('articles.create') }}"> Delete</a>
 	        </div>
 			<hr/>
+            @endif
     	@endforeach
         
     	{{ $articles->links() }}
@@ -28,7 +32,7 @@
 
         <hr />
 
-        <form method="POST" action="articles">
+        <!-- <form method="POST" action="articles">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name" class="col-md-12 control-label">
@@ -45,7 +49,7 @@
             <button type="submit" name="addArticle" class="btn btn-default">
                 {{ __("New Article") }}
             </button>
-        </form>
+        </form> -->
 
 
         </div>
