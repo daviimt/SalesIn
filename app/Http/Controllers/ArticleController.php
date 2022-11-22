@@ -81,8 +81,11 @@ class ArticleController extends Controller
         $data = $request->only('title','image','description','cicle_id');
 
         $article->update($data);
-        return back()->with('message', ['warning', __("Article Updated")]);
-        // return view('adminViews.articles.update');
+        // return back()->with('message', ['warning', __("Article Updated")]);
+        // return back()->with('message', ['success', __("Article Updated")]);
+        return redirect()->route('articles.index')
+                        ->with('success','Article updated successfully');
+
     }
 
     /**

@@ -13,6 +13,7 @@
                 <div class="card-body">
                     <form action="{{ route('articles.update',$article->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
 
@@ -76,7 +77,7 @@
                             <div class="col-md-6 offset-md-4">
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <br>
-                <a class="btn btn-primary" href="{{ route('articles.update', $article->id) }}" method="POST">Submit</a>
+                <button class="btn btn-primary" type="submit">Submit</button>
                 <a class="btn btn-primary" href="{{ route('articles.index') }}"> Back</a>
         </div>
                             </div>
