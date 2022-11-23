@@ -20,15 +20,21 @@ class ArticleController extends Controller
         return view('adminViews.articles.index', compact('articles'));
     }
 
+    public function showRegistrationForm()
+    {
+        $cicles=Cicles::all();
+        return view('adminViews.articles.newArticle',compact('cicles'));
+    } 
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * @param  array  $data
      */
-    public function create()
+    protected function create()
     {
-        // $articles = Articles::all();
-        // return view('adminViews.articles.index', compact('article'));
+        return view('adminViews.articles.newArticle');
     }
 
     /**
@@ -39,7 +45,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request()->validate( [
+            'title' => 'required',
+            'image' => 'required|email',
+            'description' => 'required',
+            'cicle_id' => 'required',
+        ]);
+        
+        $article = Article::create(request(['title', 'image', 'description', 'cicle_id']));
+
+        return redirect()->to('/articles');
     }
 
     /**

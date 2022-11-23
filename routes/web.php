@@ -13,10 +13,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('new', function()
-{
-return View::make('adminViews.articles.new');
-});
 // Auth::routes(['verify' => true]);
 
 
@@ -31,6 +27,10 @@ Route::group(['middleware' => 'admin'], function () {
     //CRUD
     Route::get('/users/{user}','AdminController@show')->name('users.show');
     Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
+
+    // Route::get('/articles/newArticle','Articlecontroller@showRegistrationForm');
+    Route::get('/newArticle', 'ArticleController@showRegistrationForm');
+    Route::put('newArticle', 'ArticleController@store')->name('articles.store');
 
     Route::resource('/articles','ArticleController');
     Route::put('/articles/{article}/softdel','ArticleController@softdel')->name('articles.softdel');
