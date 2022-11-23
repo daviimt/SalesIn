@@ -100,7 +100,7 @@
                                                         @csrf
                                                         @METHOD('PUT')
                                                         <button class="btn btn-danger" type="submit">
-                                                            SoftDelete
+                                                            Delete
                                                         </button>
                                                     </form>
 
