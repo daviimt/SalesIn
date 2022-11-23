@@ -13,6 +13,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('new', function()
+{
+return View::make('adminViews.articles.new');
+});
 // Auth::routes(['verify' => true]);
 
 
