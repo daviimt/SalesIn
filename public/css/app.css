@@ -9526,3 +9526,8 @@ a.text-dark:hover {
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
 }
+
+.col-articles{
+    display: flex;
+    justify-content: space-between;
+}

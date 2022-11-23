@@ -35,6 +35,7 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                             @if($user->deleted == 0)
+                                            @if($user->id!=1)
                                             <tr>
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
@@ -112,6 +113,7 @@
                                                     </form>
                                                 </td>
                                             </tr>
+                                            @endif
                                             @endif
                                             @endforeach
                                         </tbody>
