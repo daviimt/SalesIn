@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin','AdminController@index');
+    Route::resource('/admin','AdminController');
     //CRUD
     Route::get('/users/{user}','AdminController@show')->name('users.show');
     Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');

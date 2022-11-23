@@ -106,6 +106,6 @@ class ArticleController extends Controller
         $article = Articles::find($id);
         $article->deleted = 1;
         $article-> update();
-        return back()->with('message', ['success', __("Article successfully deleted")]); 
+        return back()->with('success', "Article successfully deleted"); 
     }
 }
