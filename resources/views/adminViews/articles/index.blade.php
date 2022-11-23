@@ -4,10 +4,15 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h1 class="text-center text-mute"> {{ __("Articles") }} </h1>
-
+        @if (session('success'))
+        <div class="alert alert-success" role="success">
+            {{ session('success') }}
+        </div>
+        @endif
         @foreach($articles as $article)
         @if($article->deleted==0)
         <div class="panel panel-default">
+
             <div class="panel-heading panel-heading-article">
                 <a href="{{route('articles.edit', $article->id)}}"> {{ $article->title }} </a>
                 <!-- <span class="pull-right">
@@ -23,7 +28,7 @@
                 @csrf
                 @METHOD('PUT')
                 <button class="btn btn-danger" type="submit">
-                    SoftDelete
+                    Delete
                 </button>
             </form>
         </div>
