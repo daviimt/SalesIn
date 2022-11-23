@@ -100,4 +100,12 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function softdel($id)
+    {
+        $article = Articles::find($id);
+        $article->deleted = 1;
+        $article-> update();
+        return back()->with('message', ['success', __("Article successfully deleted")]); 
+    }
 }

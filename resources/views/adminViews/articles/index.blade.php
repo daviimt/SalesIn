@@ -1,32 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-    	<h1 class="text-center text-mute"> {{ __("Articles") }} </h1>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="text-center text-mute"> {{ __("Articles") }} </h1>
 
-    	@foreach($articles as $article)
+        @foreach($articles as $article)
         @if($article->deleted==0)
-	        <div class="panel panel-default">
-	            <div class="panel-heading panel-heading-article">
-	            	<a href="{{route('articles.edit', $article->id)}}"> {{ $article->title }} </a>
-                    <!-- <span class="pull-right">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-heading-article">
+                <a href="{{route('articles.edit', $article->id)}}"> {{ $article->title }} </a>
+                <!-- <span class="pull-right">
                         {{ __("Articles") }}: {{ $article->title }}
                     </span> -->
-	            </div>
+            </div>
 
-	            <div class="panel-body">
-	                {{ $article->description }}
-	            </div>
-                <a class="btn btn-primary btm-sm" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
-                <a class="btn btn-danger btm-sm" href="{{ route('articles.create') }}"> Delete</a>
-	        </div>
-			<hr/>
-            @endif
-    	@endforeach
-        
-    	{{ $articles->links() }}
-        
+            <div class="panel-body">
+                {{ $article->description }}
+            </div>
+            <a class="btn btn-primary btm-sm" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
+            <form action="{{ route('articles.softdel', $article->id) }}" method="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas borrar?')">
+                @csrf
+                @METHOD('PUT')
+                <button class="btn btn-danger" type="submit">
+                    SoftDelete
+                </button>
+            </form>
+        </div>
+        <hr />
+        @endif
+        @endforeach
+
+        {{ $articles->links() }}
+
 
         <h2>{{ __("Añadir un nuevo Article") }}</h2>
 
@@ -52,6 +58,6 @@
         </form> -->
 
 
-        </div>
     </div>
+</div>
 @endsection

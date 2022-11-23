@@ -28,6 +28,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
 
     Route::resource('/articles','ArticleController');
+    Route::put('/articles/{article}/softdel','ArticleController@softdel')->name('articles.softdel');
 
     Route::put('/users/{user}/activate','AdminController@activate')->name('users.activate');
     Route::put('/users/{user}/desactivate','AdminController@desactivate')->name('users.desactivate');
