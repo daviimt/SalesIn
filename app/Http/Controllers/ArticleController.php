@@ -45,14 +45,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $request()->validate( [
-            'title' => 'required',
-            'image' => 'required|email',
-            'description' => 'required',
-            'cicle_id' => 'required',
+        $request = Articles::create([
+            'title' => $request['title'],
+            'image' => $request['image'],
+            'description' => $request['description'],
+            'cicle_id'=>$request['cicle'],
         ]);
-        
-        $article = Article::create(request(['title', 'image', 'description', 'cicle_id']));
 
         return redirect()->to('/articles');
     }
