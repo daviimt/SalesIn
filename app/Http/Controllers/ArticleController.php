@@ -52,7 +52,8 @@ class ArticleController extends Controller
             'cicle_id'=>$request['cicle'],
         ]);
 
-        return redirect()->to('/articles');
+        return redirect()->route('articles.index')
+                        ->with('success','Article Created successfully');
     }
 
     /**
