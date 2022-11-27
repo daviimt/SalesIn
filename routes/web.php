@@ -15,6 +15,8 @@ Route::get('/', function () {
 });
 // Auth::routes(['verify' => true]);
 
+Route::post('image-upload', 'ImageUploadController@store')->name('image.store');
+
 
 Auth::routes();
 
