@@ -30,7 +30,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/users/{user}','AdminController@show')->name('users.show');
     Route::get('/users/{user}/edit','AdminController@edit')->name('users.edit');
     
-    Route::get('/newArticle', 'ArticleController@showRegistrationForm');
+    Route::get('/articles/newArticle', 'ArticleController@showRegistrationForm');
 
     Route::resource('/articles','ArticleController');
     Route::put('/articles/{article}/softdel','ArticleController@softdel')->name('articles.softdel');

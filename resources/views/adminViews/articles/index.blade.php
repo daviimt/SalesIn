@@ -1,5 +1,4 @@
-    @extends('layouts.app')
-
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,7 +6,7 @@
             <div class="card">
                 <div class="card-header sd-flex justify-content-between align-items-center">
                    <a style="font-size:150%;font-weight: bold;"> {{ __('ARTICLES') }} </a>
-                    <a href="#" class="btn btn-primary btn-sm">Crear</a>
+                    <a href="articles/newArticle" class="btn btn-primary btn-sm">Crear</a>
                 </div>
                 <div class="card-body">
                     @if (session('success'))

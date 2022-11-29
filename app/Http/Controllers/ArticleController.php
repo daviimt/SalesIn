@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Articles;
 use App\Cicles;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;    
 
 class ArticleController extends Controller
 {
@@ -45,9 +45,20 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
+
+        $file = $request -> file('image');
+    
+        $name = $file->getClientOriginalName();
+    
+        \Storage::disk("image")->put($name, \File::get($file));
+
         $request = Articles::create([
             'title' => $request['title'],
-            'image' => $request['image'],
+            'image' => $name,
             'description' => $request['description'],
             'cicle_id'=>$request['cicle'],
         ]);

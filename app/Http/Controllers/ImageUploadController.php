@@ -28,7 +28,7 @@ class ImageUploadController extends Controller
  
         // $save->save();
  
-      return redirect('image-upload')->with('status', 'Image Has been uploaded')->with('image',$name);
+      return  back()->with('status', 'Image Has been uploaded')->with('image',$name);
  
     } 
 }
