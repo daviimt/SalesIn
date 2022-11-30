@@ -5,7 +5,7 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header sd-flex justify-content-between align-items-center">
-                   <a style="font-size:150%;font-weight: bold;"> {{ __('ARTICLES') }} </a>
+                    <a style="font-size:150%;font-weight: bold;"> {{ __('ARTICLES') }} </a>
                     <a href="articles/newArticle" class="btn btn-primary btn-sm">Crear</a>
                 </div>
                 <div class="card-body">
@@ -14,7 +14,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    @foreach($articles as $article)
+                    @forelse($articles as $article)
                     @if($article->deleted==0)
                     <div class="panel panel-default">
                         <div class="panel-heading panel-heading-article">
@@ -34,7 +34,13 @@
                     </div>
                     <hr />
                     @endif
-                    @endforeach
+                    @empty
+                    <div class="alert alert-danger">
+                        {{ __("No hay ningún noticia en este momento") }}
+                    </div>
+                    
+
+                    @endforelse
                     <div class="card-footer mr-auto">
                         {{ $articles->links() }}
                     </div>
