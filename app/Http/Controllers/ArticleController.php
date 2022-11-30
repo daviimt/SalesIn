@@ -107,8 +107,22 @@ class ArticleController extends Controller
             'description' => 'required',
             'cicle_id' => 'required',
         ]);
+        
+        $file = $request -> file('image');
+        if($file!=''){
+
+            $name = $file->getClientOriginalName();
+            
+            \Storage::disk("image")->put($name, \File::get($file));
+
+            $article->image = $name;
+        }
   
-        $article->update($request->all());
+        $article->update([
+                'title' => $request->get('title'),
+                'description' => $request->get('description'),
+                'cicle_id' => $request->get('cicle_id'),
+            ]);
        
         return redirect()->route('articles.index')
                         ->with('success','Article updated successfully');

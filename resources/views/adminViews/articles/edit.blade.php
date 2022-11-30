@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-header">Update</div>
                 <div class="card-body">
-                    <form action="{{ route('articles.update',$article->id) }}" method="POST">
+                    <form action="{{ route('articles.update',$article->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">

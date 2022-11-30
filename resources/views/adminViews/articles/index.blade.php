@@ -21,16 +21,18 @@
                             <a href="{{route('articles.edit', $article->id)}}" style="font-size:140%;font-weight: bold;"> {{ $article->title }} </a>
                         </div>
                         <div class="panel-body">
+                            <label><img src="{{ asset('images/'.$article->image) }}" style="width:200px;"></></label>
                             {{ $article->description }}
+                            <br>
+                            <a class="btn btn-primary btm-sm float-right" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
+                            <form class="float-right" action="{{ route('articles.softdel', $article->id) }}" method="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas borrar?')">
+                                @csrf
+                                @METHOD('PUT')
+                                <button class="btn btn-danger" type="submit">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
-                        <a class="btn btn-primary btm-sm" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
-                        <form action="{{ route('articles.softdel', $article->id) }}" method="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas borrar?')">
-                            @csrf
-                            @METHOD('PUT')
-                            <button class="btn btn-danger" type="submit">
-                                Delete
-                            </button>
-                        </form>
                     </div>
                     <hr />
                     @endif
