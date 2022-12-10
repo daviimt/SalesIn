@@ -9,8 +9,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Usuarios</h4>
-                                <p class="card-category">Usuarios registrados</p>
+                                <h4 class="card-title">Users</h4>
+                                <p class="card-category">Registered Users</p>
                             </div>
                             @if(session('message'))
                             <div class="alert alert-{{ session('message')[0] }}">
@@ -27,10 +27,10 @@
                                     <table class="table">
                                         <thead class="text-primary">
                                             <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido</th>
-                                            <th>Correo</th>
-                                            <th class="text-right">Acciones</th>
+                                            <th>Name</th>
+                                            <th>Surname</th>
+                                            <th>Email</th>
+                                            <th class="text-right">Actions</th>
                                         </thead>
                                         <tbody>
                                             @foreach ($users as $user)
@@ -72,7 +72,7 @@
                                                         @csrf
                                                         @METHOD('PUT')
                                                         <button class="btn btn-warning" type="submit" style="background-color:limegreen;border-color: limegreen;">
-                                                            Activar
+                                                            Activate
                                                         </button>
                                                     </form>
                                                     @endif
@@ -84,7 +84,7 @@
                                                         @csrf
                                                         @METHOD('PUT')
                                                         <button class="btn btn-warning" type="submit">
-                                                            Desactivar
+                                                            Desactivate
                                                         </button>
                                                     </form>
                                                     @endif

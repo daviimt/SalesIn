@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header sd-flex justify-content-between align-items-center">
                     <a style="font-size:150%;font-weight: bold;"> {{ __('ARTICLES') }} </a>
-                    <a href="articles/newArticle" class="btn btn-primary btn-sm">Crear</a>
+                    <a href="articles/newArticle" class="btn btn-primary btn-sm">New</a>
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -25,6 +25,7 @@
                             {{ $article->description }}
                             <br>
                             <a class="btn btn-primary btm-sm float-right" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
+                            <a>    </a>
                             <form class="float-right" action="{{ route('articles.softdel', $article->id) }}" method="POST" style="display : inline-block;" onsubmit="return confirm('Seguro que deseas borrar?')">
                                 @csrf
                                 @METHOD('PUT')
@@ -38,7 +39,7 @@
                     @endif
                     @empty
                     <div class="alert alert-danger">
-                        {{ __("No hay ningún noticia en este momento") }}
+                        {{ __("There isn't any new at the moment") }}
                     </div>
                     
 
