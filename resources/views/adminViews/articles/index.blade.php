@@ -29,7 +29,7 @@
                                                     <img src="{{ asset('images/'.$article->image) }}" style="width:200px;"></>
                                                 </label>
                                             </td>
-                                            <td width="70%" >
+                                            <td width="60%" >
                                                 <a>
                                                     {{ $article->description }}
                                                 </a>
