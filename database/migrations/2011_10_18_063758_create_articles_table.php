@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->engine = "InnoDB";
             $table->bigIncrements('id',10);
             $table->text('title');		
-            $table->string('image',255);
+            $table->string('image',255)->default('');
             $table->boolean('deleted')->default(0);
             $table->text('description');
             $table->unsignedBigInteger('cicle_id');

@@ -8,6 +8,7 @@
                     <a style="font-size:150%;font-weight: bold;"> {{ __('ARTICLES') }} </a>
                     <a href="articles/newArticle" class="btn btn-primary btn-sm" style="float:right; width:150px; font-size:17px">New Article</a>
                 </div>
+                <hr style="height: 20px;background-color:#1b2631; margin-top: 0em;margin-bottom: 0em;" />
                 <div class="card-body">
                     @if (session('success'))
                         <div class="alert alert-success" role="success">
@@ -26,7 +27,14 @@
                                         <tr>
                                             <td width="10%">
                                                 <label style="vertical-align:top">
-                                                    <img src="{{ asset('images/'.$article->image) }}" style="width:200px;"></>
+                                                    @if($article->image != "")
+                                                        <img src="{{ asset('images/'.$article->image) }}" style="width:200px;"></>
+                                                    
+                                                    @else
+                                                        <img src="{{ asset('images/noimage.png') }}" style="width:200px;"></>
+                                                    
+                                                    @endif
+                                                    
                                                 </label>
                                             </td>
                                             <td width="60%" >
@@ -34,7 +42,6 @@
                                                     {{ $article->description }}
                                                 </a>
                                             </td>
-                                            <br>
                                             <td width="10%">
                                                 <div style="display: flex; justify-content: right; align-items: center;">
                                                     <a class="btn btn-primary btm-sm float-right" href="{{ route('articles.edit', $article->id ) }}"> Edit</a>
@@ -49,9 +56,11 @@
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr style="height:1px;background-color:white; margin-top: 1%;margin-bottom: 1%;" />
                                 </div>
+                                
                             </div>
-                            <hr />
+                            
                         @endif
 
                         @empty

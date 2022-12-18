@@ -4562,7 +4562,11 @@ input[type=submit].btn-block {
     background-color: #212F3C;
     color: #fff;
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 1.25rem;
+}
+
+.panel{
+    margin: 2%;
 }
 
 .card-title {
@@ -4830,6 +4834,7 @@ input[type=submit].btn-block {
     list-style: none;
     border-radius: .25rem
 }
+
 
 .page-link {
     position: relative;
