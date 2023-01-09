@@ -46,6 +46,11 @@
                         </li>
                         <li class="nav-item">
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('offers.index') }}">{{ __('Offers') }}</a>
+                        </li>
+                        <li class="nav-item">
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/email/verify/{id}','AdminController@verificate_email');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/offers', 'OfferController@index')->name('offers.index');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin','AdminController@index');
