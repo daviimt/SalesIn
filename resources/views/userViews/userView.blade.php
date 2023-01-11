@@ -100,13 +100,13 @@
                                                         </button>
                                                     @endif
 
-                                                    <form action="{{ route('users.softdel', $offer->id) }}" method="POST"
+                                                    <form action="{{ route('user.offerApply', $offer->id) }}" method="POST"
                                                         style="display : inline-block;"
                                                         onsubmit="return confirm('Seguro que deseas borrar?')">
                                                         @csrf
-                                                        @METHOD('PUT')
+                                                        @METHOD('POST')
                                                         <button class="btn btn-warning" type="submit">
-                                                            VER
+                                                            APLICAR
                                                         </button>
                                                     </form>
 
@@ -114,7 +114,7 @@
                                                         style="display : inline-block;">
                                                         @csrf
                                                         <button class="btn btn-info" type="submit">
-                                                            APLICAR
+                                                            VER
                                                         </button>
                                                     </form>
                                                 </td>

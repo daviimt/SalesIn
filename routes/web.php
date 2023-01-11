@@ -22,7 +22,6 @@ Auth::routes();
 
 Route::get('/email/verify/{id}','AdminController@verificate_email');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/offers', 'OfferController@index')->name('offers.index');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin','AdminController@index');
@@ -39,4 +38,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::put('/users/{user}/desactivate','AdminController@desactivate')->name('users.desactivate');
     Route::put('/users/{user}/softdel','AdminController@softdel')->name('users.softdel');
     Route::put('/users/{user}/update','AdminController@update')->name('users.update');
+    
 });
+
+    Route::resource('/offers','OfferController');
+    Route::post('offers/softD/{id}','OfferController@softDestroy')->name('user.offerSoftD');
+    Route::post('offers/apply/{id}','OfferController@apply')->name('user.offerApply');

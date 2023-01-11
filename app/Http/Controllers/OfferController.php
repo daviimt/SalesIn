@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Applied;
 use App\Offers; 
 use App\Cicles; 
 use Illuminate\Http\Request;
@@ -18,6 +19,8 @@ class OfferController extends Controller
     {
         $offers = Offers::paginate(10);
         $cicles= Cicles::all();
+        $idUser=auth()->id();
+        
         // dd($offers);
         return view('userViews/userView', compact('offers','cicles'));
     }
@@ -48,25 +51,7 @@ class OfferController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        $file = $request -> file('image');
-    
-        $name = $file->getClientOriginalName();
-    
-        \Storage::disk("image")->put($name, \File::get($file));
-
-        $request = Articles::create([
-            'title' => $request['title'],
-            'image' => $name,
-            'description' => $request['description'],
-            'cicle_id'=>$request['cicle'],
-        ]);
-
-        return redirect()->route('articles.index')
-                        ->with('success','Article Created successfully');
+       
     }
 
     /**
@@ -86,12 +71,7 @@ class OfferController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        // return view('adminViews.editArticle', compact('article'));
-        $cicles=Cicles::all();
-        return view('adminViews.articles.edit', compact('cicles'))->with(['article'=>Articles::find($id)]);
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -102,33 +82,7 @@ class OfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article=Articles::find($id);
-        $request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'description' => 'required',
-            'cicle_id' => 'required',
-        ]);
-        
-        $file = $request -> file('image');
-        if($file!=''){
-
-            $name = $file->getClientOriginalName();
-            
-            \Storage::disk("image")->put($name, \File::get($file));
-
-            $article->image = $name;
-        }
-  
-        $article->update([
-                'title' => $request->get('title'),
-                'description' => $request->get('description'),
-                'cicle_id' => $request->get('cicle_id'),
-            ]);
        
-        return redirect()->route('articles.index')
-                        ->with('success','Article updated successfully');
-
     }
 
     /**
@@ -144,9 +98,26 @@ class OfferController extends Controller
 
     public function softdel($id)
     {
-        $article = Articles::find($id);
-        $article->deleted = 1;
-        $article-> update();
-        return back()->with('success', "Article successfully deleted"); 
+       
+    }
+
+    public function apply($id)
+    {
+        $offer = Offers::find($id);
+
+        $offer-> update(
+            [
+            'num_candidates'=> ($offer->num_candidates) +1,
+            ]);
+        
+        $apply = new Applied();
+        $apply->create(
+            [   
+                'offer_id' => $id,
+                'user_id' => auth()->id(),
+                'deleted' =>'0'
+            ]
+        );
+        return redirect()->back()->with('success','Offer applied successfully');
     }
 }
