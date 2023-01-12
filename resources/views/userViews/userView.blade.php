@@ -13,7 +13,7 @@
                             </div>
                             @if(session('message'))
                             <div class="alert alert-{{ session('message')[0] }}">
-                                    {{ session('message')[1] }}
+                                {{ session('message')[1] }}
                             </div>
                             @endif
                             <div class="card-body">
@@ -25,8 +25,8 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
-                                            <th>IMG</th>    
-                                            <th>ID</th>
+                                            <th>IMG</th>
+                                            
                                             <th>Title</th>
                                             <th class="text-right">Actions</th>
                                         </thead>
@@ -35,88 +35,65 @@
                                             @if($offer->deleted == 0)
                                             <tr>
                                                 @foreach ($cicles as $cicle)
-                                                    @if($offer->cicle_id == $cicle->id)
-                                                    <td>
-                                                        @if($cicle->img != "")
-                                                                <img src="{{ asset('images/'.$cicle->img) }}" style="width:40px;"></>
-                                                        @else
-                                                                <img src="{{ asset('images/noimage.png') }}" style="width:40px;"></>
-                                                        @endif
-                                                    </td>
+                                                @if($offer->cicle_id == $cicle->id)
+                                                <td>
+                                                    @if($cicle->img != "")
+                                                    <img src="{{ asset('images/'.$cicle->img) }}" style="width:40px;"></>
+                                                    @else
+                                                    <img src="{{ asset('images/noimage.png') }}" style="width:40px;"></>
                                                     @endif
+                                                </td>
+                                                @endif
                                                 @endforeach
-                                                <td>{{ $offer->id }}</td>
                                                 <td>{{ $offer->title }}</td>
 
                                                 <td class="td-actions text-right">
+                                                   
+                                                    </form>
 
-                                                    <!-- INICIO PARA SOLO ADMINISTRADOR -->
-                                                    <!-- @can('user_show')
-                                                    <a href="{{ route('users.show', $offer->id) }}"
-                                                        class="btn btn-info"><i class="material-icons">person</i></a>
-                                                    @endcan
-                                                    @can('user_edit')
-                                                    <a href="{{ route('users.edit', $offer->id) }}"
-                                                        class="btn btn-warning"><i class="material-icons">edit</i></a>
-                                                    @endcan
-                                                    @can('user_destroy')
-                                                    <form action="{{ route('users.delete', $offer->id) }}" method="POST"
-                                                        style="display: inline-block;"
-                                                        onsubmit="return confirm('Seguro?')">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit" rel="tooltip">
-                                                            <i class="material-icons">close</i>
-                                                        </button> -->
-                                                    </form>
-                                                    @endcan
-                                                    <!-- FINAL -->
-                                                    <!-- @if($offer->actived == 0)
-                                                    <form action="{{ route('users.activate', $offer->id) }}"
-                                                        method="POST" style="display : inline-block;"
-                                                        onsubmit="return confirm('Seguro que deseas activar?')">
-                                                        @csrf
-                                                        @METHOD('PUT')
-                                                        <button class="btn btn-warning" type="submit" style="background-color:limegreen;border-color: limegreen;">
-                                                            Activate
-                                                        </button>
-                                                    </form>
-                                                    @endif
-
-                                                    @if($offer->actived == 1)
-                                                    <form action="{{ route('users.desactivate', $offer->id) }}"
-                                                        method="POST" style="display : inline-block;"
-                                                        onsubmit="return confirm('Seguro que deseas desactivar?')">
-                                                        @csrf
-                                                        @METHOD('PUT')
-                                                        <button class="btn btn-warning" type="submit">
-                                                            Desactivate
-                                                        </button>
-                                                    </form>
-                                                    @endif -->
                                                     @else
                                                     <button class="btn btn-warning" type="submit" disabled=true>
-                                                            Not actived
-                                                        </button>
+                                                        Not actived
+                                                    </button>
                                                     @endif
 
-                                                    <form action="{{ route('user.offerApply', $offer->id) }}" method="POST"
-                                                        style="display : inline-block;"
-                                                        onsubmit="return confirm('Seguro que deseas borrar?')">
+                                                    <form action="{{ route('users.offerApply', $offer->id)}}" method="POST" class="float-right">
                                                         @csrf
-                                                        @METHOD('POST')
-                                                        <button class="btn btn-warning" type="submit">
-                                                            APLICAR
-                                                        </button>
+                                                        @method('POST')
+                                                        <button type="submit" class="btn btn-primary btm-sm float-right"> Apply</button>
                                                     </form>
 
-                                                    <form action="{{ route('users.show', $offer->id) }}"
-                                                        style="display : inline-block;">
-                                                        @csrf
-                                                        <button class="btn btn-info" type="submit">
-                                                            VER
-                                                        </button>
-                                                    </form>
+                                                    <!-- Show -->
+                                                    <a style="visibility: hidden" class="float-right">
+                                                            <a class="float-right">
+                                                                <button type="button" class="btn btn-primary ttm-sm" data-bs-toggle="modal" data-bs-target="#modal-show-{{$offer->id}}">
+                                                                    Show
+                                                                </button>
+                                                            </a>
+                                                            <!-- {{-- Show - Modal --}} -->
+                                                            <div class="modal fade" id="modal-show-{{$offer->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <form action="{{ route('users.offerShow', $offer->id)}}" method="GET" class="float-right">
+                                                                        @csrf
+                                                                        @method('GET')
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h1 class="modal-title" id="exampleModalLabel">Offer details</h1>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <strong>{{$offer->title}}</strong>
+                                                                                <br>
+                                                                                {{$offer->description}}
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <!-- {{-- End Show Modal --}} -->
                                                 </td>
                                             </tr>
                                             @endforeach

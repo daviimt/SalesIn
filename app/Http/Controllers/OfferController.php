@@ -17,12 +17,18 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offers::paginate(10);
-        $cicles= Cicles::all();
-        //como recorro todas las ofertas donde id sea igual a las offer_id de applies
-        
-        // dd($offers);
-        return view('userViews/userView', compact('offers','cicles'));
+        $offers = Offers::all();
+        $cicles = Cicles::all(); 
+        $user_id= auth()->id();
+        $applies = Applied::where('user_id','!=',$user_id)->with(['offer'])->paginate(20);
+
+        $offers = Offers::select('offers.id', 'offers.title', 'offers.description', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
+                ->leftJoin('applieds', function($join) use ($user_id) {
+                 $join->on('offers.id', '=', 'applieds.offer_id')
+                      ->where('applieds.user_id', '=', $user_id);
+              })->whereNull('applieds.id')->where('offers.deleted', 0)->paginate(5);
+    
+        return view('userViews.userView', compact('cicles', 'offers'));
     }
 
     public function showRegistrationForm()
@@ -62,7 +68,9 @@ class OfferController extends Controller
      */
     public function show($id)
     {
-        //
+        $offer = Offers::find($id);
+        dd($offer);
+        return view('userViews.userView',compact('offer'));
     }
 
     /**
