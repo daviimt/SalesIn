@@ -19,7 +19,7 @@ class OfferController extends Controller
     {
         $offers = Offers::paginate(10);
         $cicles= Cicles::all();
-        $idUser=auth()->id();
+        //como recorro todas las ofertas donde id sea igual a las offer_id de applies
         
         // dd($offers);
         return view('userViews/userView', compact('offers','cicles'));
