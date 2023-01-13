@@ -20,8 +20,8 @@ class InformesController extends Controller
         $offers = Offers::select('offers.id', 'offers.title', 'offers.description', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
         ->leftJoin('applieds', function($join) use ($user_id) {
          $join->on('offers.id', '=', 'applieds.offer_id')
-              ->where('applieds.user_id', '=', $user_id)->get();
-        });
+              ->where('applieds.user_id', '=', $user_id);
+        })->get();
 
         $pdf = \PDF::loadView('general',compact('offers',$offers));;
         // Para crear un pdf en el navegador usaremos la siguiente línea
