@@ -2,6 +2,7 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
+        Haz click <a href="{{ route('pdf') }}">aquí</a> para descargar el PDF
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
