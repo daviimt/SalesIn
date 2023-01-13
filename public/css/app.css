@@ -5546,7 +5546,8 @@ button.close {
     position: relative;
     width: auto;
     margin: .5rem;
-    pointer-events: none
+    pointer-events: none;
+    color: #000000
 }
 
 .modal.fade .modal-dialog {

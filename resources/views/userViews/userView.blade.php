@@ -66,7 +66,7 @@
                                                     <!-- Show -->
                                                     <a style="visibility: hidden" class="float-right">
                                                             <a class="float-right">
-                                                                <button type="button" class="btn btn-primary ttm-sm" data-bs-toggle="modal" data-bs-target="#modal-show-{{$offer->id}}">
+                                                                <button type="button" class="btn btn-primary ttm-sm" data-toggle="modal" data-target="#modal-show-{{$offer->id}}">
                                                                     Show
                                                                 </button>
                                                             </a>
@@ -79,7 +79,7 @@
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h1 class="modal-title" id="exampleModalLabel">Offer details</h1>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <strong>{{$offer->title}}</strong>
@@ -87,7 +87,7 @@
                                                                                 {{$offer->description}}
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                             </div>
                                                                         </div>
                                                                     </form>
