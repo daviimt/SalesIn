@@ -26,26 +26,26 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
-                                            <th>IMG</th>
-                                            
+                                            <th>IMG</th>    
                                             <th>Title</th>
                                             <th class="text-right">Actions</th>
                                         </thead>
                                         <tbody>
                                             @foreach ($offers as $offer)
                                             @if($offer->deleted == 0)
-                                            <tr>
-                                                @foreach ($cicles as $cicle)
-                                                @if($offer->cicle_id == $cicle->id)
+                                            <tr>                                        
                                                 <td>
-                                                    @if($cicle->img != "")
-                                                    <img src="{{ asset('images/'.$cicle->img) }}" style="width:40px;"></>
-                                                    @else
-                                                    <img src="{{ asset('images/noimage.png') }}" style="width:40px;"></>
-                                                    @endif
+                                                    @foreach ($cicles as $cicle)
+                                                        @if($offer->cicle_id == $cicle->id) 
+                                                            @if(str_contains($cicle->img, ".png"))
+                                                                <img src="{{ asset('images/'.$cicle->img) }}" style="width:40px;"></>
+                                                                @else
+                                                                <img src="{{ asset('images/noimage.png') }}" style="width:40px;"></>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
                                                 </td>
-                                                @endif
-                                                @endforeach
+
                                                 <td>{{ $offer->title }}</td>
 
                                                 <td class="td-actions text-right">

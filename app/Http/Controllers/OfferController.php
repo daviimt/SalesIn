@@ -20,9 +20,8 @@ class OfferController extends Controller
         $offers = Offers::all();
         $cicles = Cicles::all(); 
         $user_id= auth()->id();
-        $applies = Applied::where('user_id','!=',$user_id)->with(['offer'])->paginate(20);
 
-        $offers = Offers::select('offers.id', 'offers.title', 'offers.description', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
+        $offers = Offers::select('offers.id', 'offers.title', 'offers.description','offers.cicle_id', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
                 ->leftJoin('applieds', function($join) use ($user_id) {
                  $join->on('offers.id', '=', 'applieds.offer_id')
                       ->where('applieds.user_id', '=', $user_id);
