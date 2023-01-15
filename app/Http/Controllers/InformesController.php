@@ -15,13 +15,15 @@ class InformesController extends Controller
 {
 
         public function general() {
+        $offers = Offers::all();
+        $cicles = Cicles::all(); 
         $user_id= auth()->id();
-        $applies = Applied::where('user_id','==',$user_id)->with(['offer'])->paginate(20);
-        $offers = Offers::select('offers.id', 'offers.title', 'offers.description', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
-        ->leftJoin('applieds', function($join) use ($user_id) {
-         $join->on('offers.id', '=', 'applieds.offer_id')
-              ->where('applieds.user_id', '=', $user_id);
-        })->get();
+
+        $offers = Offers::select('offers.id', 'offers.title', 'offers.description','offers.cicle_id', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
+                ->leftJoin('applieds', function($join) use ($user_id) {
+                 $join->on('offers.id', '=', 'applieds.offer_id')
+                      ->where('applieds.user_id', '=', $user_id);
+              })->whereNotNull('applieds.id')->where('offers.deleted', 0)->get();
 
         $pdf = \PDF::loadView('general',compact('offers',$offers));;
         // Para crear un pdf en el navegador usaremos la siguiente línea
