@@ -1,3 +1,4 @@
+
 <?php
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,4 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('/offers','OfferController');
     Route::post('offers/apply/{id}','OfferController@apply')->name('users.offerApply');
     Route::get('offers/show/{id}','OfferController@show')->name('users.offerShow');
+    Route::get('send-email-pdf', [PDFController::class, 'index']);

@@ -9,6 +9,8 @@ use App\Cicles;
 use App\Offers;
 use App\Applied;
 use App\User;
+use Mail;
+  
 
 
 
@@ -29,9 +31,24 @@ class InformesController extends Controller
 
         $pdf = \PDF::loadView('general',compact('offers',$offers,'cicles',$cicles,'user',$user));;
         // Para crear un pdf en el navegador usaremos la siguiente línea
-        return $pdf->stream();
+        // return $pdf->stream();
         // Para descargar un pdf en un archivo usaremos la siguiente línea
-        return $pdf->download('prueba.pdf');
+        // return $pdf->download('prueba.pdf');
+
+        
+        $data["email"] = "info.salesin@proton.me";
+        $data["title"] = "FROM SALESIN";
+        $data["body"] = "You can download your pdf in the -Attachments(1)- section at the top right";
+  
+
+  
+        Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"])
+                    ->attachData($pdf->output(), "OffersSalesIn.pdf");
+        });
+  
+        dd('Mail sent successfully');
         }
       
 }
