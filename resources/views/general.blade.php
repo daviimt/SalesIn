@@ -4,9 +4,9 @@
             @foreach ($cicles as $cicle)
                 @if($offer->cicle_id == $cicle->id) 
                     @if(str_contains($cicle->img, ".png"))
-                        <p> {{ asset('images/'.$cicle->img) }} </p>
-                        @else
-                        <p>{{ asset('images/noimage.png') }}" </p>
+                    <img src="{{('images/'.$cicle->img) }}" style="width:40px;"/>
+                    @else
+                    <img src="{{ ('images/noimage.png') }}" style="width:40px;"/>
                     @endif
                 @endif
             @endforeach
@@ -22,9 +22,11 @@
 
     
     @forelse($offers as $offer)
-        <p>{{ $offer->title }}: {{$offer->description }}</p>
+        <p>{{ $offer->title }}</p>
+        <p> {{$offer->description }}</p>
+        <br/>
         @empty
-            <p>No hay ofertas aplicadas</p>
+        <p>No hay ofertas aplicadas</p>
     @endempty
     
 </div>
