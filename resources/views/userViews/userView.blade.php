@@ -2,7 +2,6 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        Haz click <a href="{{ route('pdf') }}">aquí</a> para descargar el PDF
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -101,9 +100,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
-                            <div class="card-footer mr-auto">
-                                {{$offers->links()}}
+                            <div class="float-left">
+                            <a href="{{ route('pdf') }}">
+                                <button type="button" class="btn btn-primary ttm-sm float-left">PDF</button>
+                            </a>
+                            {{$offers->links()}}
                             </div>
                         </div>
                     </div>
