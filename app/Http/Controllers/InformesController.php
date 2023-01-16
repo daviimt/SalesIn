@@ -47,8 +47,7 @@ class InformesController extends Controller
                     ->subject($data["title"])
                     ->attachData($pdf->output(), "OffersSalesIn.pdf");
         });
-  
-        dd('Mail sent successfully');
+        return redirect()->back()->with('success','Mail sent successfully');
         }
       
 }
