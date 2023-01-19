@@ -17,6 +17,6 @@ class AccessUser
     {
         if (auth()->check() && auth()->user()->type === 'u')
         return $next($request);
-        return redirect('/');
+        return redirect('/')->with('error','Only a user can access');
     }
 }
