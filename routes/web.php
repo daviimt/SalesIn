@@ -42,8 +42,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::put('/users/{user}/update','AdminController@update')->name('users.update');
     
 });
-
+Route::group(['middleware' => 'user'], function () {
     Route::resource('/offers','OfferController');
     Route::post('offers/apply/{id}','OfferController@apply')->name('users.offerApply');
     Route::get('offers/show/{id}','OfferController@show')->name('users.offerShow');
     Route::get('send-email-pdf', [PDFController::class, 'index']);
+});
