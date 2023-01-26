@@ -174,10 +174,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
 
         //Generar PDF
         Barryvdh\DomPDF\ServiceProvider::class,
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
