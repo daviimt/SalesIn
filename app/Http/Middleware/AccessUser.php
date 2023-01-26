@@ -15,7 +15,7 @@ class AccessUser
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->type === 'u')
+        if (auth()->check() && auth()->user()->type === 'u' || auth()->user()->type === 'U')
         return $next($request);
         return redirect('/')->with('error','Only a user can access');
     }
