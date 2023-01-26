@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Mail\UserVerificationEmail;
@@ -12,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens,Notifiable;
+    use Notifiable;
 
     public function sendEmailVerificationNotification()
     {
