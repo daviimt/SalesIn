@@ -48,3 +48,7 @@ Route::group(['middleware' => 'user'], function () {
     Route::get('offers/show/{id}','OfferController@show')->name('users.offerShow');
     Route::get('send-email-pdf', [PDFController::class, 'index']);
 });
+
+Route::post('/createArticle','ArticleController@storeTest');
+Route::post('/register','AdminController@storeTest');
+Route::delete('/articlesDelete/{id}','ArticleController@destroy');
