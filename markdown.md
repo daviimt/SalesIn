@@ -7,6 +7,7 @@
 * [Registro](#register)
 * [Login](#login)
 * [PDF](#PDF)
+* [LogOut](#Logout)
 
 
 <a name="register"></a>
@@ -47,7 +48,7 @@ Si el usuario esta registrado y activado , deberia hacer login y llevarnos a la 
 <a name="Offers"></a>
 
 
-###Offers
+### Offers
 
 Desde la pestaña de inicio , como usuario solo podemos acceder al apartado de **offers** de la barra superior, la cual nos mostrara las ofertas que haya activas en ese momento.
 
@@ -66,7 +67,7 @@ Desde el botton **Apply**, aplicaremos a esa oferta
 
 <a name="PDF"></a>
 
-###PDF
+### PDF
 
 Desde el boton **PDF**, se nos mostrara un mensaje de aviso cuando nuestro correo se haya generado y mandado por correo
 
@@ -79,7 +80,7 @@ Desde el boton **PDF**, se nos mostrara un mensaje de aviso cuando nuestro corre
 
 <a name="Logout"></a>
 
-###PDF
+### LogOut
 
 Para hacer logout, en la barra superior haremos click en nuestro nombre de usuario y se abrira un desplegable con el boton **Logout**
 
