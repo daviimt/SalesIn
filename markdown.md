@@ -15,19 +15,19 @@
 
 Para registrarse en la aplicacion de **SalesIn**,accederemos al apartado **Register** situado en la parte superior derecha de la web.
 
-![initSalesIn]()
+![initSalesIn](https://github.com/daviimt/SalesIn/blob/main/markdownImages/registro1.PNG?raw=true)
 
 Una vez accedigo al apartado registro, se nos mostrara la para registrarse con un formulario para introducir nuestros datos, una vez introducimos, nos registraremos mediante el boton **Register**
 
-![formRegister]()
+![formRegister](https://github.com/daviimt/SalesIn/blob/main/markdownImages/registro2.PNG?raw=true)
 
 Si los datos han sido insertados de manera correcta, nos redigira a la pestaña de login con un aviso de que es necesario activar la cuenta por correo.
 
-![activateEmail]()
+![activateEmail](https://github.com/daviimt/SalesIn/blob/main/markdownImages/registro3.PNG?raw=true)
 
 En el email recivido, para activar la cuenta lo haremos mediante el boton azul **Activate** **Account**
 
-![activateAccount]()
+![activateAccount](https://github.com/daviimt/SalesIn/blob/main/markdownImages/registro4.PNG?raw=true)
 
 
 <a name="login"></a>
@@ -36,12 +36,12 @@ En el email recivido, para activar la cuenta lo haremos mediante el boton azul *
 
 Para hacer login en la aplicacion, ingresaremos los datos del usuario y para acceder le daremos al boton **Login**
 
-![initLogin]()
+![initLogin](https://github.com/daviimt/SalesIn/blob/main/markdownImages/login1.PNG?raw=true)
 
 
 Si el usuario esta registrado y activado , deberia hacer login y llevarnos a la pestaña de inicio.
 
-![logedWindow]()
+![logedWindow](https://github.com/daviimt/SalesIn/blob/main/markdownImages/loged1.PNG?raw=true)
 
 
 <a name="Offers"></a>
@@ -51,17 +51,17 @@ Si el usuario esta registrado y activado , deberia hacer login y llevarnos a la 
 
 Desde la pestaña de inicio , como usuario solo podemos acceder al apartado de **offers** de la barra superior, la cual nos mostrara las ofertas que haya activas en ese momento.
 
-![listOffers]()
+![listOffers](https://github.com/daviimt/SalesIn/blob/main/markdownImages/offers1.PNG?raw=true)
 
 
 Desde la pestaña, offers podemos hacer vaias opciones, una de ellas es motrarlos datos de la oferta desde el botonn **Show**
 
-![detailsOffer]()
+![detailsOffer](https://github.com/daviimt/SalesIn/blob/main/markdownImages/offers2.PNG?raw=true)
 
 
 Desde el botton **Apply**, aplicaremos a esa oferta
 
-![appliedOffer]()
+![appliedOffer](https://github.com/daviimt/SalesIn/blob/main/markdownImages/offers3.PNG?raw=true)
 
 
 <a name="PDF"></a>
@@ -70,11 +70,11 @@ Desde el botton **Apply**, aplicaremos a esa oferta
 
 Desde el boton **PDF**, se nos mostrara un mensaje de aviso cuando nuestro correo se haya generado y mandado por correo
 
-![pdfMessage]()
+![pdfMessage](https://github.com/daviimt/SalesIn/blob/main/markdownImages/mail1.PNG?raw=true)
 
-![email]()
+![email](https://github.com/daviimt/SalesIn/blob/main/markdownImages/email2.PNG?raw=true)
 
-![pdfEmail]()
+![pdfEmail](https://github.com/daviimt/SalesIn/blob/main/markdownImages/pdf.PNG?raw=true)
 
 
 <a name="Logout"></a>
@@ -83,7 +83,7 @@ Desde el boton **PDF**, se nos mostrara un mensaje de aviso cuando nuestro corre
 
 Para hacer logout, en la barra superior haremos click en nuestro nombre de usuario y se abrira un desplegable con el boton **Logout**
 
-![logout]()
+![logout](https://github.com/daviimt/SalesIn/blob/main/markdownImages/logout.PNG?raw=true)
 
 
 
