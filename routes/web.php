@@ -46,4 +46,5 @@ Route::group(['middleware' => 'user'], function () {
     Route::post('offers/apply/{id}','OfferController@apply')->name('users.offerApply');
     Route::get('offers/show/{id}','OfferController@show')->name('users.offerShow');
     Route::get('send-email-pdf', [PDFController::class, 'index']);
+
 });

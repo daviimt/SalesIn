@@ -9,6 +9,18 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+
+    public function storeTest(Request $request)
+    {
+            $data = request()->validate([
+                'title' => '',
+                'image' => '',
+                'cicle_id'=> '',
+                'description' => '',
+            ]);
+    
+            Articles::create($data);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -137,7 +149,11 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Articles::find($id);
+        $article->delete();
+
+        return redirect('/articlesDelete/');
+
     }
 
     public function softdel($id)

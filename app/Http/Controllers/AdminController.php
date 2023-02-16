@@ -14,6 +14,20 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function storeTest(Request $request)
+    {
+        $data = request()->validate([
+            'name' => '',
+            'surname' => '',
+            'email' => '',
+            'cicle_id' => '',
+            'password' => '',
+        ]);
+
+        User::create($data);
+    }
+    
     public function index()
     {
         //$users = User::all();
