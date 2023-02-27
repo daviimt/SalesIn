@@ -2,7 +2,7 @@
 ![portada](https://github.com/daviimt/SalesIn/blob/main/markdownImages/portada.png?raw=true)
 
 <a name="top"></a>
-# Manual Usuario Almagest
+# Manual Usuario SalesIN
 
 * [Registro](#register)
 * [Login](#login)
